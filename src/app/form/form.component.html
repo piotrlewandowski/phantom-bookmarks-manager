@@ -1,7 +1,22 @@
-<form class="form bookmark-form">
+<form class="form bookmark-form" [formGroup]="bookmarkForm" (ngSubmit)="onSubmit()" novalidate>
   <legend>Add bookmark</legend>
-  <div class="form-group">
-    <input class="form-control" id="bookmark" name="bookmark" type="text" placeholder="Please enter bookmark address" aria-label="Please enter bookmark address">
-  </div>
-  <button class="btn btn-primary" type="submit">Save bookmark</button>
+
+  <fieldset class="form-group">
+    <input class="form-control"
+           type="text"
+           size="30"
+           id="url"
+           name="url"
+           placeholder="Please enter bookmark address"
+           aria-label="Please enter bookmark address"
+           formControlName="url"
+    >
+  </fieldset>
+
+  <button class="btn btn-primary"
+          type="submit"
+          [disabled]="!bookmarkForm.valid"
+  >
+    Save bookmark
+  </button>
 </form>
