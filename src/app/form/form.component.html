@@ -11,6 +11,7 @@
            aria-label="Please enter bookmark address"
            formControlName="url"
     >
+    <app-validation-message [control]="bookmarkForm.controls.url"></app-validation-message>
   </fieldset>
 
   <button class="btn btn-primary"

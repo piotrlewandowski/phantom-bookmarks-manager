@@ -8,6 +8,8 @@ import { FormComponent } from './form/form.component';
 import { SuccessComponent } from './success/success.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ValidationMessageComponent } from './form/validation-message.component';
+import { ValidationService } from './_services/validation.service';
 
 @NgModule({
   declarations: [
@@ -16,13 +18,14 @@ import { ReactiveFormsModule } from '@angular/forms';
     FormComponent,
     SuccessComponent,
     PageNotFoundComponent,
+    ValidationMessageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [ValidationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,8 +3,10 @@ import {
   FormGroup,
   FormBuilder,
   FormControl,
-  Validators, Form,
+  Validators,
 } from '@angular/forms';
+import { ValidationService } from '../_services/validation.service';
+
 
 @Component({
   selector: 'app-form',
@@ -18,7 +20,10 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.bookmarkForm = this.formBuilder.group({
-      url: ['', Validators.required],
+      url: new FormControl('', Validators.compose([
+        Validators.required,
+        ValidationService.urlValidator,
+      ])),
     });
   }
 
