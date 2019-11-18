@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-success',
@@ -6,11 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./success.component.scss']
 })
 export class SuccessComponent implements OnInit {
-  link = 'http://example-link/';
+  url: string;
 
-  constructor() { }
+  constructor(private location: Location) {
+  }
 
   ngOnInit() {
+    const { url } = history.state;
+
+    if (!url) {
+      this.location.back();
+    }
+
+    this.url = url;
   }
 
 }

@@ -1,4 +1,15 @@
 <div class="page-container home">
   <app-form></app-form>
-  <div class="alert alert-info" role="alert">No bookmarks</div>
+
+  <ng-container *ngIf="bookmarks; then showBookmarks; else noBookmarks"></ng-container>
+
+  <ng-template #showBookmarks>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let bookmark of bookmarks | keyvalue">{{bookmark.value}}</li>
+    </ul>
+  </ng-template>
+
+  <ng-template #noBookmarks>
+    <div class="alert alert-info" role="alert">No bookmarks</div>
+  </ng-template>
 </div>

@@ -5,8 +5,10 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { ValidationService } from '../_services/validation.service';
+import { Router } from '@angular/router';
 
+import { ValidationService } from '../_services/validation.service';
+import { BookmarkService } from '../_services/bookmark.service';
 
 @Component({
   selector: 'app-form',
@@ -16,7 +18,11 @@ import { ValidationService } from '../_services/validation.service';
 export class FormComponent implements OnInit {
   bookmarkForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private bookmarkService: BookmarkService
+  ) { }
 
   ngOnInit() {
     this.bookmarkForm = this.formBuilder.group({
@@ -34,7 +40,11 @@ export class FormComponent implements OnInit {
       return;
     }
 
-    console.info('form:', this.bookmarkForm.value);
+    const { url } = this.bookmarkForm.value;
+
+    this.bookmarkService.add(url).then((result) => {
+      this.router.navigateByUrl('/success', { state: { url: result }});
+    });
   }
 
 }
