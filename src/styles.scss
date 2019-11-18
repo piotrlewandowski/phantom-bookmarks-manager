@@ -1,0 +1,23 @@
+@import "~bootstrap/scss/bootstrap";
+
+.page-container {
+  margin-top: 1.25rem;
+}
+
+.bookmark-form {
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.9375rem;
+  border-bottom: 1px solid var(--gray-dark);
+}
+
+.bookmark-form #bookmark {
+  width: 100%;
+}
+
+.bookmark-form .alert {
+  margin-top: .75rem;
+}
+
+.bookmark-form .text-danger {
+  margin-top: .625rem;
+}
